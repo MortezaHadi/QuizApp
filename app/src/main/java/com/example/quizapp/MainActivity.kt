@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
-
         val btnStart = findViewById<Button>(R.id.btnClick)
         val etName = findViewById<AppCompatEditText>(R.id.et_name)
 
@@ -24,18 +23,12 @@ class MainActivity : AppCompatActivity() {
             val name = etName.text.toString()
 
             if (name.isEmpty()) {
-
                 Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
-
             } else {
                 val intent = Intent(this , QuizQuestionsActivity::class.java)
                 intent.putExtra("myName",name)
                 startActivity(intent)
-
             }
-
-
         }
-
     }
 }

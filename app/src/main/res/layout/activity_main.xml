@@ -19,7 +19,6 @@
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
-
         />
 
     <androidx.cardview.widget.CardView
@@ -60,14 +59,14 @@
                 android:layout_marginTop="20dp"
 
                 >
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/et_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Name"
                     android:textColor="@color/purple_700"
-                    android:textColorHint="@color/teal_200"
-                    />
+                    android:textColorHint="@color/teal_200" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -77,17 +76,12 @@
                 android:layout_marginTop="16dp"
                 android:background="#8C18FA"
                 android:text="Start"
-                android:textSize="18sp"
                 android:textColor="@color/white"
+                android:textSize="18sp"
                 android:textStyle="bold"
 
                 />
 
-
-
-
         </LinearLayout>
-
-
     </androidx.cardview.widget.CardView>
 </LinearLayout>

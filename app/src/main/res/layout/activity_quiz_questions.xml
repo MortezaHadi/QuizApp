@@ -8,12 +8,11 @@
     tools:context=".QuizQuestionsActivity">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_gravity="center"
+        android:orientation="vertical"
         android:padding="16dp">
 
 
@@ -21,41 +20,39 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="30dp"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
-            android:layout_margin="30dp"
-            />
+            app:layout_constraintVertical_bias="0.5" />
 
 
+        <TextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="what country does this flag velong to?"
+            android:textColor="#363A43"
+            android:textSize="22sp" />
 
-<TextView
-    android:id="@+id/tvQuestion"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:layout_gravity="center"
-    android:textColor="#363A43"
-    android:textSize="22sp"
-    android:text="what country does this flag velong to?"/>
-
-<ImageView
-    android:id="@+id/ivImage"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    android:src="@drawable/ic_flag_of_argentina"/>
+        <ImageView
+            android:id="@+id/ivImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_flag_of_argentina" />
 
         <LinearLayout
             android:id="@+id/llProgressDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <ProgressBar
@@ -64,11 +61,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:indeterminate="false"
                 android:max="10"
                 android:minHeight="50dp"
-                android:progress="0"
-                android:indeterminate="false"
-                />
+                android:progress="0" />
 
             <TextView
                 android:id="@+id/tvProgress"
@@ -78,28 +74,24 @@
                 android:padding="15dp"
                 android:textColorHint="#7A8089"
                 android:textSize="14sp"
-                tools:text="0/10"
-                />
-
-
-
+                tools:text="0/10" />
 
         </LinearLayout>
 
-<TextView
-    android:id="@+id/tvOptionOne"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginBottom="10dp"
-    android:background="@drawable/default_option_border_bg"
-    android:gravity="center"
-    android:padding="15dp"
-    android:textColor="#7A8089"
-    android:textSize="18sp"
-    android:text="APPLE"/>
+        <TextView
+            android:id="@+id/tvOptionOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/default_option_border_bg"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="APPLE"
+            android:textColor="#7A8089"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tvOptionTwo"
@@ -112,21 +104,21 @@
             android:background="@drawable/default_option_border_bg"
             android:gravity="center"
             android:padding="15dp"
+            android:text="GOOGLE"
             android:textColor="#7A8089"
-            android:textSize="18sp"
-            android:text="GOOGLE"/>
+            android:textSize="18sp" />
 
 
         <TextView
             android:id="@+id/tvOptionThree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/default_option_border_bg"
+            android:gravity="center"
             android:padding="15dp"
             android:text="AMAZOON"
             android:textColor="#7A8089"
@@ -143,10 +135,9 @@
             android:background="@drawable/default_option_border_bg"
             android:gravity="center"
             android:padding="15dp"
+            android:text="NOKIA"
             android:textColor="#7A8089"
-            android:textSize="18sp"
-            android:text="NOKIA"/>
-
+            android:textSize="18sp" />
 
 
         <Button
@@ -155,18 +146,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/purple_200"
-            android:text="SUBMIT"
+            android:text="@string/submit"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold"
-            />
-
+            android:textStyle="bold" />
 
 
     </LinearLayout>
-
-
-
 
 
 </ScrollView>
