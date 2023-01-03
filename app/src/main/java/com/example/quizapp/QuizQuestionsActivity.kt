@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import com.example.Constants
 import com.example.quizapp.databinding.ActivityQuizQuestionsBinding
+import kotlin.math.sin
 
 class QuizQuestionsActivity : AppCompatActivity() {
 
@@ -29,28 +31,28 @@ class QuizQuestionsActivity : AppCompatActivity() {
         binding.tvOptionOne.setOnClickListener {
             chooseOption = 1
             defaultOption()
-            optionOneColor("choose")
+            optionNumber(convertState(ConvertEnum.CHOOSE), OptionsEnum.ONE)
         }
         binding.tvOptionTwo.setOnClickListener {
             chooseOption = 2
             defaultOption()
-            optionTwoColor("choose")
+            optionNumber(convertState(ConvertEnum.CHOOSE), OptionsEnum.TWO)
         }
         binding.tvOptionThree.setOnClickListener {
             chooseOption = 3
             defaultOption()
-            optionThreeColor("choose")
+            optionNumber(convertState(ConvertEnum.CHOOSE), OptionsEnum.THREE)
         }
         binding.tvOptionFour.setOnClickListener {
             chooseOption = 4
             defaultOption()
-            optionFourColor("choose")
+            optionNumber(convertState(ConvertEnum.CHOOSE), OptionsEnum.FOUR)
         }
 
         binding.btnSubmit.setOnClickListener {
 
             if (binding.btnSubmit.text == "SUBMIT" && chooseOption != 0) {
-                nonClickableOptions()
+                clickableOptions(false)
                 if (currentPosition == 9) {
                     binding.btnSubmit.text = "Finish"
                 } else {
@@ -61,23 +63,23 @@ class QuizQuestionsActivity : AppCompatActivity() {
                 if (chooseOption == questionsList[currentPosition - 1].correctAnswer) {
                     point++
                     when (chooseOption) {
-                        1 -> optionOneColor("correct")
-                        2 -> optionTwoColor("correct")
-                        3 -> optionThreeColor("correct")
-                        4 -> optionFourColor("correct")
+                        1 -> optionNumber(convertState(ConvertEnum.CORRECT), OptionsEnum.ONE)
+                        2 -> optionNumber(convertState(ConvertEnum.CORRECT),OptionsEnum.TWO)
+                        3 -> optionNumber(convertState(ConvertEnum.CORRECT), OptionsEnum.THREE)
+                        4 -> optionNumber(convertState(ConvertEnum.CORRECT), OptionsEnum.FOUR)
                     }
                 } else {
                     when (chooseOption) {
-                        1 -> optionOneColor("wrong")
-                        2 -> optionTwoColor("wrong")
-                        3 -> optionThreeColor("wrong")
-                        4 -> optionFourColor("wrong")
+                        1 -> optionNumber(convertState(ConvertEnum.WRONG), OptionsEnum.ONE)
+                        2 -> optionNumber(convertState(ConvertEnum.WRONG), OptionsEnum.TWO)
+                        3 -> optionNumber(convertState(ConvertEnum.WRONG), OptionsEnum.THREE)
+                        4 -> optionNumber(convertState(ConvertEnum.WRONG), OptionsEnum.FOUR)
                     }
                     when (questionsList[currentPosition - 1].correctAnswer) {
-                        1 -> optionOneColor("correct")
-                        2 -> optionTwoColor("correct")
-                        3 -> optionThreeColor("correct")
-                        4 -> optionFourColor("correct")
+                        1 -> optionNumber(convertState(ConvertEnum.CORRECT), OptionsEnum.ONE)
+                        2 -> optionNumber(convertState(ConvertEnum.CORRECT), OptionsEnum.TWO)
+                        3 -> optionNumber(convertState(ConvertEnum.CORRECT), OptionsEnum.THREE)
+                        4 -> optionNumber(convertState(ConvertEnum.CORRECT), OptionsEnum.FOUR)
                     }
                 }
 
@@ -101,7 +103,7 @@ class QuizQuestionsActivity : AppCompatActivity() {
 
     private fun setQuestion(currentPosition: Int) {
         defaultOption()
-        clickableOptions()
+        clickableOptions(true)
 
         val question: Question = questionsList[currentPosition - 1]
 
@@ -115,44 +117,37 @@ class QuizQuestionsActivity : AppCompatActivity() {
         binding.tvOptionFour.text = question.optionFour
     }
 
-    private fun optionOneColor(status: String) {
-        when (status) {
-            "correct" -> binding.tvOptionOne.setBackgroundResource(R.drawable.correct_option_border_bg)
-
-            "wrong" -> binding.tvOptionOne.setBackgroundResource(R.drawable.wrong_option_border_bg)
-
-            "choose" -> binding.tvOptionOne.setBackgroundResource(R.drawable.selected_option_border_bg)
+    private fun optionNumber(status: Int, option: OptionsEnum) {
+        when (option) {
+            OptionsEnum.ONE -> binding.tvOptionOne.setBackgroundResource(status)
+            OptionsEnum.TWO -> binding.tvOptionTwo.setBackgroundResource(status)
+            OptionsEnum.THREE -> binding.tvOptionThree.setBackgroundResource(status)
+            OptionsEnum.FOUR -> binding.tvOptionFour.setBackgroundResource(status)
         }
     }
 
-    private fun optionTwoColor(status: String) {
-        when (status) {
-            "correct" -> binding.tvOptionTwo.setBackgroundResource(R.drawable.correct_option_border_bg)
+    private fun convertState(status: ConvertEnum): Int {
+        val sina: Int = when (status) {
+            ConvertEnum.CORRECT -> R.drawable.correct_option_border_bg
 
-            "wrong" -> binding.tvOptionTwo.setBackgroundResource(R.drawable.wrong_option_border_bg)
+            ConvertEnum.WRONG -> R.drawable.wrong_option_border_bg
 
-            "choose" -> binding.tvOptionTwo.setBackgroundResource(R.drawable.selected_option_border_bg)
+            ConvertEnum.CHOOSE -> R.drawable.selected_option_border_bg
         }
+        return sina
     }
 
-    private fun optionThreeColor(status: String) {
-        when (status) {
-            "correct" -> binding.tvOptionThree.setBackgroundResource(R.drawable.correct_option_border_bg)
-
-            "wrong" -> binding.tvOptionThree.setBackgroundResource(R.drawable.wrong_option_border_bg)
-
-            "choose" -> binding.tvOptionThree.setBackgroundResource(R.drawable.selected_option_border_bg)
-        }
+    enum class ConvertEnum {
+        CORRECT,
+        WRONG,
+        CHOOSE
     }
 
-    private fun optionFourColor(status: String) {
-        when (status) {
-            "correct" -> binding.tvOptionFour.setBackgroundResource(R.drawable.correct_option_border_bg)
-
-            "wrong" -> binding.tvOptionFour.setBackgroundResource(R.drawable.wrong_option_border_bg)
-
-            "choose" -> binding.tvOptionFour.setBackgroundResource(R.drawable.selected_option_border_bg)
-        }
+    enum class OptionsEnum {
+        ONE,
+        TWO,
+        THREE,
+        FOUR
     }
 
     private fun defaultOption() {
@@ -162,18 +157,10 @@ class QuizQuestionsActivity : AppCompatActivity() {
         binding.tvOptionFour.setBackgroundResource(R.drawable.default_option_border_bg)
     }
 
-    private fun clickableOptions() {
-        binding.tvOptionOne.isClickable = true
-        binding.tvOptionTwo.isClickable = true
-        binding.tvOptionThree.isClickable = true
-        binding.tvOptionFour.isClickable = true
-
-    }
-
-    private fun nonClickableOptions() {
-        binding.tvOptionOne.isClickable = false
-        binding.tvOptionTwo.isClickable = false
-        binding.tvOptionThree.isClickable = false
-        binding.tvOptionFour.isClickable = false
+    private fun clickableOptions(boolean: Boolean) {
+        binding.tvOptionOne.isClickable = boolean
+        binding.tvOptionTwo.isClickable = boolean
+        binding.tvOptionThree.isClickable = boolean
+        binding.tvOptionFour.isClickable = boolean
     }
 }

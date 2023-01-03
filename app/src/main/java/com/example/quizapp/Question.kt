@@ -1,7 +1,5 @@
 package com.example.quizapp
 
-import android.telephony.ims.ImsReasonInfo
-
 data class Question(
     val id: Int,
     val question: String,
